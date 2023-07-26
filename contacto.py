@@ -33,9 +33,9 @@ class Contacto:
             "interior": self.interior,
             "colonia": self.colonia,
             "municipio": self.municipio,
-            "ciudad" : self.ciudad,
+            "ciudad": self.ciudad,
             "estado": self.estado,
-            "pais" : self.pais,
+            "pais": self.pais,
         }
 
     def get_all(self):
@@ -46,7 +46,8 @@ class Contacto:
 
         try:
             file_manager.get_is_file_exist(ARTICLE_FILE_PATH)
-            file_manager.update_json_file(ARTICLE_FILE_PATH, dict_article, True)
+            file_manager.update_json_file(
+                ARTICLE_FILE_PATH, dict_article, True)
 
         except FileNotFoundError:
             file_manager.create_json_files(ARTICLE_FILE_PATH, [dict_article])
