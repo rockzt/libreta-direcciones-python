@@ -19,7 +19,8 @@ def create(file_name: str, content: list | dict | str = None) -> None:
         raise OSError(f"File '{file_name}' already exists") from error
 
     except PermissionError as error:
-        raise OSError(f"You do not hav permisson to create '{file_name}'") from error
+        raise OSError(
+            f"You do not hav permisson to create '{file_name}'") from error
 
     if content and isinstance(content, (list, dict)):
         content = json.dumps(content)
