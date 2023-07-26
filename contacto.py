@@ -1,6 +1,6 @@
-import files_management
 import os
 
+import files_management
 
 current_path = os.path.dirname(__file__)
 ARTICLE_FILE_NAME = "contactos.json"
@@ -8,7 +8,22 @@ ARTICLE_FILE_PATH = current_path + f"/{ARTICLE_FILE_NAME}"
 
 
 class Contacto:
-    def __init__(self, nombre, apellido, telefono, email, calle, exterior, colonia, municipio, ciudad, estado, pais, interior = ""):
+
+    def __init__(
+        self,
+        nombre,
+        apellido,
+        telefono,
+        email,
+        calle,
+        exterior,
+        colonia,
+        municipio,
+        ciudad,
+        estado,
+        pais,
+        interior="",
+    ):
         self.nombre = nombre
         self.apellido = apellido
         self.telefono = telefono
@@ -33,9 +48,9 @@ class Contacto:
             "interior": self.interior,
             "colonia": self.colonia,
             "municipio": self.municipio,
-            "ciudad" : self.ciudad,
+            "ciudad": self.ciudad,
             "estado": self.estado,
-            "pais" : self.pais,
+            "pais": self.pais,
         }
 
     def get_all(self):
