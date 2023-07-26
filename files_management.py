@@ -5,7 +5,7 @@ import json
 
 
 
-def create(file_name: str, content: list | dict | str = None) -> None:
+def create(file_name: str, content: (list, dict, str) = None) -> None:
     """Create a new json file
 
     Args:
@@ -31,7 +31,7 @@ def create(file_name: str, content: list | dict | str = None) -> None:
     file.close()
 
 
-def update(file_name: str, content: list | dict | str) -> None:
+def update(file_name: str, content: (list,  dict, str)) -> None:
     """Updates an existing file
 
     Args:
@@ -39,7 +39,7 @@ def update(file_name: str, content: list | dict | str) -> None:
         content (str): Text file content
         overwrite (bool, optional): If True, file will be overwritten. Defaults to False.
     """
-    if not isinstance(content, dict | list | str) or content == "":
+    if not isinstance(content, (dict, list, str)) or content == "":
         raise ValueError("'content' argument must be specified")
     try:
         file = open(file_name)
@@ -94,4 +94,26 @@ def read(file_name: str) -> str:
     try:
         return json.loads(content)
     except Exception:
-        return content   
+        return content
+
+
+def delete_file(file_path):
+    try:
+        get_is_file_exist(file_path)
+        os.remove(file_path)
+    except FileNotFoundError as error:
+        raise IOError(f"File with path {file_path} doesn't exist") from error
+    except PermissionError as error:
+        raise IOError(f"You don't have permissions to delete this file") from error
+
+
+
+
+
+def get_is_file_exist(file_path):
+    is_file_exists = os.path.exists(file_path)
+
+    if is_file_exists:
+        return True
+    else:
+        raise FileNotFoundError

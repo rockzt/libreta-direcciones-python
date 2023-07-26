@@ -1,14 +1,14 @@
-import file_manager
+import files_management
 import os
 
 
 current_path = os.path.dirname(__file__)
-ARTICLE_FILE_NAME = "article.json"
+ARTICLE_FILE_NAME = "contactos.json"
 ARTICLE_FILE_PATH = current_path + f"/{ARTICLE_FILE_NAME}"
 
 
 class Contacto:
-    def __init__(self, nombre, apellido, telefono, email, calle, exterior, interior, colonia, municipio, ciudad, estado, pais):
+    def __init__(self, nombre, apellido, telefono, email, calle, exterior, colonia, municipio, ciudad, estado, pais, interior = ""):
         self.nombre = nombre
         self.apellido = apellido
         self.telefono = telefono
@@ -39,14 +39,28 @@ class Contacto:
         }
 
     def get_all(self):
-        return file_manager.read_json_file(ARTICLE_FILE_PATH)
+        return files_management.read(ARTICLE_FILE_PATH)
+
+    def count_all(self):
+        contacts = files_management.read(ARTICLE_FILE_PATH)
+        iterations = 0
+        for contact in contacts:
+            iterations += 1
+        return iterations
 
     def save(self):
-        dict_article = self.as_dict()
+        dict_contacto = self.as_dict()
 
         try:
-            file_manager.get_is_file_exist(ARTICLE_FILE_PATH)
-            file_manager.update_json_file(ARTICLE_FILE_PATH, dict_article, True)
+            files_management.update(ARTICLE_FILE_PATH, dict_contacto)
 
         except FileNotFoundError:
-            file_manager.create_json_files(ARTICLE_FILE_PATH, [dict_article])
+            files_management.create(ARTICLE_FILE_PATH, dict_contacto)
+
+
+
+    def delete(self):
+        try:
+            files_management.delete_file(ARTICLE_FILE_PATH)
+        except FileNotFoundError as error:
+            print("Could not delete -> ", error)
