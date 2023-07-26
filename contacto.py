@@ -1,6 +1,6 @@
-import files_management
 import os
 
+import files_management
 
 current_path = os.path.dirname(__file__)
 ARTICLE_FILE_NAME = "contactos.json"
