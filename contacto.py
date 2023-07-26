@@ -8,7 +8,21 @@ ARTICLE_FILE_PATH = current_path + f"/{ARTICLE_FILE_NAME}"
 
 
 class Contacto:
-    def __init__(self, nombre, apellido, telefono, email, calle, exterior, colonia, municipio, ciudad, estado, pais, interior=""):
+    def __init__(
+        self,
+        nombre,
+        apellido,
+        telefono,
+        email,
+        calle,
+        exterior,
+        colonia,
+        municipio,
+        ciudad,
+        estado,
+        pais,
+        interior="",
+    ):
         self.nombre = nombre
         self.apellido = apellido
         self.telefono = telefono
@@ -60,7 +74,7 @@ class Contacto:
         end = args[1]
         contacts = files_management.read(ARTICLE_FILE_PATH)
         contact_list = []
-        for contact in contacts[start - 1:end]:
+        for contact in contacts[start - 1 : end]:
             contact_list.append(contact)
         print(contact_list)
 
