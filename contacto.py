@@ -1,6 +1,6 @@
-import file_manager
 import os
 
+import file_manager
 
 current_path = os.path.dirname(__file__)
 ARTICLE_FILE_NAME = "article.json"
