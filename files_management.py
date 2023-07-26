@@ -27,7 +27,6 @@ def create(file_name: str, content: (list, dict, str) = None) -> None:
         content = json.dumps(content)
 
     file.write(content)
-
     file.close()
 
 
@@ -75,8 +74,6 @@ def update(file_name: str, content: (list,  dict, str)) -> None:
         file.close()
 
 
-
-
 def read(file_name: str) -> str:
     """Returns the content of a text file
 
@@ -112,7 +109,6 @@ def delete_file(file_path):
 
 def get_is_file_exist(file_path):
     is_file_exists = os.path.exists(file_path)
-
     if is_file_exists:
         return True
     else:

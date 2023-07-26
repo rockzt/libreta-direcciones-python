@@ -4,3 +4,4 @@ contacto = Contacto("rodrigo", "zavala", "12456", "r@gmail.com", "begonias", "14
 #contacto.save()
 
 print(contacto.count_all())
+contacto.get_contact_list_interval(1, 5)
