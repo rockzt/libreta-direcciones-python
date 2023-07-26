@@ -50,14 +50,19 @@ class Contacto:
 
     def save(self):
         dict_contacto = self.as_dict()
-
         try:
             files_management.update(ARTICLE_FILE_PATH, dict_contacto)
-
         except FileNotFoundError:
             files_management.create(ARTICLE_FILE_PATH, dict_contacto)
 
-
+    def get_contact_list_interval(self, *args):
+        start = args[0]
+        end = args[1]
+        contacts = files_management.read(ARTICLE_FILE_PATH)
+        contact_list = []
+        for contact in contacts[start - 1:end]:
+            contact_list.append(contact)
+        print(contact_list)
 
     def delete(self):
         try:
