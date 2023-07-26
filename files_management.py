@@ -3,8 +3,6 @@ import os
 import json
 
 
-
-
 def create(file_name: str, content: (list, dict, str) = None) -> None:
     """Create a new json file
 
@@ -21,7 +19,8 @@ def create(file_name: str, content: (list, dict, str) = None) -> None:
         raise OSError(f"File '{file_name}' already exists") from error
 
     except PermissionError as error:
-        raise OSError(f"You do not hav permisson to create '{file_name}'") from error
+        raise OSError(
+            f"You do not hav permisson to create '{file_name}'") from error
 
     if content and isinstance(content, (list, dict)):
         content = json.dumps(content)
@@ -66,7 +65,7 @@ def update(file_name: str, content: (list,  dict, str)) -> None:
         file = open(file_name)
         file_content = file.read()
         file.close()
-        
+
         file_content += content
 
         file = open(file_name, "w")
@@ -84,7 +83,7 @@ def read(file_name: str) -> str:
     """
     if not os.path.exists(file_name):
         raise FileNotFoundError(f"File {file_name} was not found")
-    
+
     file = open(file_name)
     content = file.read()
     file.close()
@@ -101,10 +100,8 @@ def delete_file(file_path):
     except FileNotFoundError as error:
         raise IOError(f"File with path {file_path} doesn't exist") from error
     except PermissionError as error:
-        raise IOError(f"You don't have permissions to delete this file") from error
-
-
-
+        raise IOError(
+            f"You don't have permissions to delete this file") from error
 
 
 def get_is_file_exist(file_path):
