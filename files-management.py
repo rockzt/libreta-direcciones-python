@@ -3,6 +3,8 @@ import os
 import json
 
 
+
+
 def create(file_name: str, content: list | dict | str = None) -> None:
     """Create a new json file
 
