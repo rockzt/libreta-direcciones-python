@@ -1,6 +1,6 @@
-import file_manager
 import os
 
+import file_manager
 
 current_path = os.path.dirname(__file__)
 ARTICLE_FILE_NAME = "article.json"
@@ -8,7 +8,22 @@ ARTICLE_FILE_PATH = current_path + f"/{ARTICLE_FILE_NAME}"
 
 
 class Contacto:
-    def __init__(self, nombre, apellido, telefono, email, calle, exterior, interior, colonia, municipio, ciudad, estado, pais):
+
+    def __init__(
+        self,
+        nombre,
+        apellido,
+        telefono,
+        email,
+        calle,
+        exterior,
+        interior,
+        colonia,
+        municipio,
+        ciudad,
+        estado,
+        pais,
+    ):
         self.nombre = nombre
         self.apellido = apellido
         self.telefono = telefono
@@ -33,9 +48,9 @@ class Contacto:
             "interior": self.interior,
             "colonia": self.colonia,
             "municipio": self.municipio,
-            "ciudad" : self.ciudad,
+            "ciudad": self.ciudad,
             "estado": self.estado,
-            "pais" : self.pais,
+            "pais": self.pais,
         }
 
     def get_all(self):
@@ -46,7 +61,8 @@ class Contacto:
 
         try:
             file_manager.get_is_file_exist(ARTICLE_FILE_PATH)
-            file_manager.update_json_file(ARTICLE_FILE_PATH, dict_article, True)
+            file_manager.update_json_file(ARTICLE_FILE_PATH, dict_article,
+                                          True)
 
         except FileNotFoundError:
             file_manager.create_json_files(ARTICLE_FILE_PATH, [dict_article])
