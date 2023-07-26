@@ -8,6 +8,7 @@ ARTICLE_FILE_PATH = current_path + f"/{ARTICLE_FILE_NAME}"
 
 
 class Contacto:
+
     def __init__(
         self,
         nombre,
@@ -60,7 +61,8 @@ class Contacto:
 
         try:
             file_manager.get_is_file_exist(ARTICLE_FILE_PATH)
-            file_manager.update_json_file(ARTICLE_FILE_PATH, dict_article, True)
+            file_manager.update_json_file(ARTICLE_FILE_PATH, dict_article,
+                                          True)
 
         except FileNotFoundError:
             file_manager.create_json_files(ARTICLE_FILE_PATH, [dict_article])
