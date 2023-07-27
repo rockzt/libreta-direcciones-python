@@ -106,3 +106,8 @@ class Contacto:
             if list_name_user == []:
                 print('Tu libreta esta vacia')
         
+    def delete_file(self):
+        try:
+            files_management.delete_file(ARTICLE_FILE_PATH)
+        except FileNotFoundError as error:
+            print("Could not delete -> ", error)

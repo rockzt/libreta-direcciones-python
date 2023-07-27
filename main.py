@@ -1,9 +1,9 @@
 from contacto import Contacto
 
 contacto = Contacto(
-    "isai",
-    "rivera",
-    "55555",
+    "rodrigo",
+    "zavala",
+    "12456",
     "r@gmail.com",
     "begonias",
     "140",
@@ -13,7 +13,6 @@ contacto = Contacto(
     "CDMX",
     "MX",
 )
-
 
 #GUARDAR UN CONTACTO (en un archivo .json)
 contacto.save() 
@@ -27,4 +26,6 @@ contacto.delet('isai','55555')
 print(contacto.get_all())
 #BONUS Consultar un numero definido de contactos
 contacto.get_contact_list_interval(1, 5)
-
+# contacto.save()
+print(contacto.count_all())
+contacto.get_contact_list_interval(1, 5)

@@ -110,6 +110,7 @@ def get_is_file_exist(file_path):
         return True
     else:
         raise FileNotFoundError
+
     
 def delet_entity(file_path,entity):
     try:
@@ -125,5 +126,3 @@ def delet_entity(file_path,entity):
         file.close()
     except FileNotFoundError as error:
         raise IOError(f"File with path {file_path} doesn't exist") from error
-    
-    
