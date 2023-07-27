@@ -111,15 +111,15 @@ def get_is_file_exist(file_path):
     else:
         raise FileNotFoundError
 
-    
-def delet_entity(file_path,entity):
+
+def delet_entity(file_path, entity):
     try:
         get_is_file_exist(file_path)
         file = open(file_path)
         file_content = json.loads(file.read())
         file.close()
         for idx, enty in enumerate(file_content):
-            if enty  == entity:
+            if enty == entity:
                 file_content.pop(idx)
         file = open(file_path, "w")
         file.write(json.dumps(file_content))
