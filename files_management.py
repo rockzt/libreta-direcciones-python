@@ -110,3 +110,19 @@ def get_is_file_exist(file_path):
         return True
     else:
         raise FileNotFoundError
+
+    
+def delet_entity(file_path,entity):
+    try:
+        get_is_file_exist(file_path)
+        file = open(file_path)
+        file_content = json.loads(file.read())
+        file.close()
+        for idx, enty in enumerate(file_content):
+            if enty  == entity:
+                file_content.pop(idx)
+        file = open(file_path, "w")
+        file.write(json.dumps(file_content))
+        file.close()
+    except FileNotFoundError as error:
+        raise IOError(f"File with path {file_path} doesn't exist") from error

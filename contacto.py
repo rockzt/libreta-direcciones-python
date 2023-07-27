@@ -79,7 +79,34 @@ class Contacto:
             contact_list.append(contact)
         print(contact_list)
 
-    def delete(self):
+    def consult(self, name, cel =''):
+        contacts = files_management.read(ARTICLE_FILE_PATH)
+        for user in contacts:
+            try:
+                if user["nombre"] == name or user["telefono"] == cel:
+                    contacto = user
+                    print(contacto)
+            except Exception:
+                print('El contacto no exite')
+
+        
+    def delet(self, name, cel =''):
+        contacts = files_management.read(ARTICLE_FILE_PATH)
+        list_name_user=[]
+        try:
+            for user in contacts:
+                list_name_user.append(user["nombre"])
+                if user["nombre"] == name or user["telefono"] == cel:
+                    contacto = user
+            print(f"El contacto: {contacto} a sido ELIMINADO")
+            files_management.delet_entity(ARTICLE_FILE_PATH,contacto)
+        except Exception:
+            if not name in list_name_user:
+                print('El contacto no existe')
+            if list_name_user == []:
+                print('Tu libreta esta vacia')
+        
+    def delete_file(self):
         try:
             files_management.delete_file(ARTICLE_FILE_PATH)
         except FileNotFoundError as error:
