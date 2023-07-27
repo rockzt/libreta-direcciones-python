@@ -8,7 +8,6 @@ ARTICLE_FILE_PATH = current_path + f"/{ARTICLE_FILE_NAME}"
 
 
 class Contacto:
-
     def __init__(
         self,
         nombre,
@@ -75,11 +74,11 @@ class Contacto:
         end = args[1]
         contacts = files_management.read(ARTICLE_FILE_PATH)
         contact_list = []
-        for contact in contacts[start - 1:end]:
+        for contact in contacts[start - 1 : end]:
             contact_list.append(contact)
         print(contact_list)
 
-    def consult(self, name, cel=''):
+    def consult(self, name, cel=""):
         contacts = files_management.read(ARTICLE_FILE_PATH)
         for user in contacts:
             try:
@@ -87,9 +86,9 @@ class Contacto:
                     contacto = user
                     print(contacto)
             except Exception:
-                print('El contacto no exite')
+                print("El contacto no exite")
 
-    def delet(self, name, cel=''):
+    def delet(self, name, cel=""):
         contacts = files_management.read(ARTICLE_FILE_PATH)
         list_name_user = []
         try:
@@ -101,9 +100,9 @@ class Contacto:
             files_management.delet_entity(ARTICLE_FILE_PATH, contacto)
         except Exception:
             if not name in list_name_user:
-                print('El contacto no existe')
+                print("El contacto no existe")
             if list_name_user == []:
-                print('Tu libreta esta vacia')
+                print("Tu libreta esta vacia")
 
     def delete_file(self):
         try:

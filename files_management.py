@@ -19,8 +19,7 @@ def create(file_name: str, content: (list, dict, str) = None) -> None:
         raise OSError(f"File '{file_name}' already exists") from error
 
     except PermissionError as error:
-        raise OSError(
-            f"You do not hav permisson to create '{file_name}'") from error
+        raise OSError(f"You do not hav permisson to create '{file_name}'") from error
 
     if content and isinstance(content, (list, dict)):
         content = json.dumps(content)
@@ -100,8 +99,7 @@ def delete_file(file_path):
     except FileNotFoundError as error:
         raise IOError(f"File with path {file_path} doesn't exist") from error
     except PermissionError as error:
-        raise IOError(
-            f"You don't have permissions to delete this file") from error
+        raise IOError(f"You don't have permissions to delete this file") from error
 
 
 def get_is_file_exist(file_path):
