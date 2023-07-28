@@ -17,12 +17,12 @@ contacto = Contacto(
 #GUARDAR UN CONTACTO (en un archivo .json)
 #contacto.save()
 #Consultar un contacto (por nombre y numero o solo nombre.)
-#print(contacto.consultar('rodrigo'))
+#print(contacto.consultar('manuel'))
 #Consultar el numero total de contactos
 #print(contacto.count_all())
 #Eliminar un contacto (por nombre y numero o solo nombre)
-contacto.delet('rodrigo')
+#contacto.delet('rodrigo')
 #Consultar el numero total de contactos
 #print(contacto.get_all())
 #BONUS Consultar un numero definido de contactos
-#contacto.get_contact_list_interval(1, 5)
+#contacto.get_contact_list_interval(1, 3)

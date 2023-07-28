@@ -99,26 +99,9 @@ class Contacto:
             contacto = self.consultar(name)
             files_management.delet_entity(ARTICLE_FILE_PATH, contacto)
             print(f"El contacto: {name} a sido ELIMINADO")
-            '''
-            for user in contacts:
-                #list_name_user.append(user.get('nombre'))
-                if user.get('nombre') == name:
-                    contacto = user
-                    print(contacto)
-                    files_management.delet_entity(ARTICLE_FILE_PATH,contacto)
-                    print(f"El contacto: {contacto} a sido ELIMINADO")
-                else:
-                    raise ValueError(f"{name} does not exist!!")
-            '''
 
         except FileNotFoundError as e:
             raise ValueError (f"File not found", e)
-            '''
-            if not name in list_name_user:
-                print('El contacto no existe')
-            if list_name_user == []:
-                print('Tu libreta esta vacia')
-            '''
 
         
     def delete_file(self):
