@@ -79,32 +79,47 @@ class Contacto:
             contact_list.append(contact)
         print(contact_list)
 
-    def consult(self, name, cel =''):
+    def consultar(self, name):
         contacts = files_management.read(ARTICLE_FILE_PATH)
+        nombres = []
+        contacto = []
+
         for user in contacts:
-            try:
-                if user["nombre"] == name or user["telefono"] == cel:
-                    contacto = user
-                    print(contacto)
-            except Exception:
-                print('El contacto no exite')
+            if user.get('nombre') == name:
+                nombres.append(user.get('nombre'))
+                contacto.append(user)
+
+        if name not in nombres:
+            raise ValueError(f"{name} does not exist!!")
+        return contacto
 
         
-    def delet(self, name, cel =''):
-        contacts = files_management.read(ARTICLE_FILE_PATH)
-        list_name_user=[]
+    def delet(self, name):
         try:
+            contacto = self.consultar(name)
+            files_management.delet_entity(ARTICLE_FILE_PATH, contacto)
+            print(f"El contacto: {name} a sido ELIMINADO")
+            '''
             for user in contacts:
-                list_name_user.append(user["nombre"])
-                if user["nombre"] == name or user["telefono"] == cel:
+                #list_name_user.append(user.get('nombre'))
+                if user.get('nombre') == name:
                     contacto = user
-            print(f"El contacto: {contacto} a sido ELIMINADO")
-            files_management.delet_entity(ARTICLE_FILE_PATH,contacto)
-        except Exception:
+                    print(contacto)
+                    files_management.delet_entity(ARTICLE_FILE_PATH,contacto)
+                    print(f"El contacto: {contacto} a sido ELIMINADO")
+                else:
+                    raise ValueError(f"{name} does not exist!!")
+            '''
+
+        except FileNotFoundError as e:
+            raise ValueError (f"File not found", e)
+            '''
             if not name in list_name_user:
                 print('El contacto no existe')
             if list_name_user == []:
                 print('Tu libreta esta vacia')
+            '''
+
         
     def delete_file(self):
         try:

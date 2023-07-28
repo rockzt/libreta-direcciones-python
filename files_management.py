@@ -119,7 +119,7 @@ def delet_entity(file_path,entity):
         file_content = json.loads(file.read())
         file.close()
         for idx, enty in enumerate(file_content):
-            if enty  == entity:
+            if enty.get('nombre') == entity[0].get('nombre'):
                 file_content.pop(idx)
         file = open(file_path, "w")
         file.write(json.dumps(file_content))

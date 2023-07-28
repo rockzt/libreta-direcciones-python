@@ -15,17 +15,14 @@ contacto = Contacto(
 )
 
 #GUARDAR UN CONTACTO (en un archivo .json)
-contacto.save() 
+#contacto.save()
 #Consultar un contacto (por nombre y numero o solo nombre.)
-contacto.consult('marce')
+#print(contacto.consultar('rodrigo'))
 #Consultar el numero total de contactos
-print(contacto.count_all())
+#print(contacto.count_all())
 #Eliminar un contacto (por nombre y numero o solo nombre)
-contacto.delet('isai','55555')
+contacto.delet('rodrigo')
 #Consultar el numero total de contactos
-print(contacto.get_all())
+#print(contacto.get_all())
 #BONUS Consultar un numero definido de contactos
-contacto.get_contact_list_interval(1, 5)
-# contacto.save()
-print(contacto.count_all())
-contacto.get_contact_list_interval(1, 5)
+#contacto.get_contact_list_interval(1, 5)
